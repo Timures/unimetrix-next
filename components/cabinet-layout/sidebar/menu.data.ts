@@ -1,4 +1,4 @@
-import { LayoutDashboard } from "lucide-react";
+import { Building2, LayoutDashboard, Settings2 } from "lucide-react";
 import { IMenuItem } from "./menu.interface";
 
 export const MENU: IMenuItem[] = [
@@ -8,8 +8,13 @@ export const MENU: IMenuItem[] = [
     name: "Dashboard",
   },
   {
-    icon: LayoutDashboard,
+    icon: Building2,
     link: "/organizations",
     name: "Organizations",
+  },
+  {
+    icon: Settings2,
+    link: "/cabinet/settings",
+    name: "Settings",
   },
 ];

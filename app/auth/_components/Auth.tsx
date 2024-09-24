@@ -47,7 +47,7 @@ export function Auth() {
         <Separator />
 
         <div className="flex flex-col gap-3">
-          <div className="grid w-full max-w-sm items-center gap-1.5">
+          <div className="flex flex-col gap-3">
             <Label htmlFor="email">Email</Label>
             <Input
               {...register("email")}
@@ -57,7 +57,7 @@ export function Auth() {
             />
           </div>
 
-          <div className="grid w-full max-w-sm items-center gap-1.5">
+          <div className="flex flex-col gap-3">
             <Label htmlFor="email">Password</Label>
             <Input
               {...register("password")}
