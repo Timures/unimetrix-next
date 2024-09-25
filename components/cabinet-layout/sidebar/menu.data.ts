@@ -9,7 +9,7 @@ export const MENU: IMenuItem[] = [
   },
   {
     icon: Building2,
-    link: "/organizations",
+    link: "/cabinet/organizations",
     name: "Organizations",
   },
   {

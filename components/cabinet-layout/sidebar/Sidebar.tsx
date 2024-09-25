@@ -8,7 +8,7 @@ import { MenuItem } from "./MenuItem";
 
 export function Sidebar() {
   return (
-    <aside className="bg-gray-900 border-r border-r-border border-gray-700 h-full flex flex-col justify-between">
+    <aside className="bg-gray-900 border-r border-r-border border-gray-800 h-full flex flex-col justify-between">
       <div>
         <Link
           href="/"
@@ -31,7 +31,7 @@ export function Sidebar() {
         </div>
 
         <footer className="text-xs opacity-40 font-normal text-center p-2">
-          2024 &copy; With love from{""}
+          2024 &copy; With love from{" "}
           <a
             href="https://youtube.com"
             target="_blank"
