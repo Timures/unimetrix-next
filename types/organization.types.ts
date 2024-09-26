@@ -4,6 +4,10 @@ export interface IOrganization extends IBase {
   name: string;
 }
 
+export interface IOrganizationForm {
+  name: string;
+}
+
 export interface IOrganizationResponse {
   id: string;
   createdAt?: string;

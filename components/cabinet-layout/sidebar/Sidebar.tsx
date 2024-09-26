@@ -2,7 +2,7 @@
 
 import { GanttChartSquare } from "lucide-react";
 import Link from "next/link";
-import { LogoutButton } from "./LogoutButton";
+
 import { MENU } from "./menu.data";
 import { MenuItem } from "./MenuItem";
 
@@ -24,25 +24,23 @@ export function Sidebar() {
         </Link>
 
         <div className="p-3 relative">
-          <LogoutButton />
           {MENU.map((item) => (
             <MenuItem item={item} key={item.link} />
           ))}
         </div>
-
-        <footer className="text-xs opacity-40 font-normal text-center p-2">
-          2024 &copy; With love from{" "}
-          <a
-            href="https://youtube.com"
-            target="_blank"
-            className="hover:text-primary text-brand-300 transition-colors"
-          >
-            Timures
-          </a>
-          . <br />
-          All rights reserved.
-        </footer>
       </div>
+      <footer className="text-xs opacity-40 font-normal text-center p-2">
+        2024 &copy; With love from{" "}
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          className="hover:text-primary text-brand-300 transition-colors"
+        >
+          Timures
+        </a>
+        . <br />
+        All rights reserved.
+      </footer>
     </aside>
   );
 }

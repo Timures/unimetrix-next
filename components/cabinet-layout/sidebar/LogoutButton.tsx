@@ -15,14 +15,14 @@ export function LogoutButton() {
     onSuccess: () => router.push("/auth"),
   });
   return (
-    <div className="absolute top-1 right-1">
+    <div className="w-10 h-10 ">
       <Button
         onClick={() => mutate()}
         size={"icon"}
-        variant={"ghost"}
+        variant={"default"}
         title="Log Out"
       >
-        <LogOut size={20} />
+        <LogOut size={24} />
       </Button>
     </div>
   );
