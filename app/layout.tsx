@@ -3,8 +3,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
 import { Toaster } from "sonner";
-
-
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: {
@@ -15,9 +14,9 @@ export const metadata: Metadata = {
   icons: [
     {
       url: "/logo.svg",
-      href: "/logo.svg"
-    }
-  ]
+      href: "/logo.svg",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -26,13 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className="antialiased"
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased">
         <Providers>
-          {children}
-          <Toaster theme="dark" position="bottom-right" duration={1500} />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster theme="dark" position="bottom-right" duration={1500} />
+          </ThemeProvider>
         </Providers>
       </body>
     </html>

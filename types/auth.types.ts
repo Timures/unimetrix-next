@@ -1,6 +1,7 @@
 export interface IAuthForm {
   email: string;
   password: string;
+  roles: Role[];
 }
 
 export interface IUser {

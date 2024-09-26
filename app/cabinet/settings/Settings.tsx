@@ -39,7 +39,7 @@ export function Settings() {
               {...register("name")}
               type="text"
               id="name"
-              placeholder="Enter Password"
+              placeholder="Name"
             />
           </div>
 
@@ -54,7 +54,7 @@ export function Settings() {
           </div>
 
           <div className="mb-3">
-            <Label htmlFor="email">Password</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
               {...register("password")}
               type="password"

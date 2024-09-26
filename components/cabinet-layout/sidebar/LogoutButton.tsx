@@ -12,7 +12,7 @@ export function LogoutButton() {
   const { mutate } = useMutation({
     mutationKey: ["logout"],
     mutationFn: () => authService.logout(),
-    onSuccess: () => router.push("/auth"),
+    onSuccess: () => router.push("/sign-in"),
   });
   return (
     <div className="w-10 h-10 ">
