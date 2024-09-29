@@ -8,19 +8,32 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export function SelectOrg() {
   const { data } = useProfile();
-  const [organization, setOrganization] = useState();
+  const [organizationId, setOrganizationId] = useState<string | undefined>();
+  const pathname = usePathname();
   const router = useRouter();
-  const handleValueChange = (value) => {
-    setOrganization(value); // Update state
+
+  // Извлечение ID организации из пути
+  useEffect(() => {
+    const parts = pathname.split("/");
+    const organizationIndex = parts.indexOf("organization");
+
+    // Проверяем, есть ли индекс "organization" и есть ли следующий элемент
+    if (organizationIndex !== -1 && parts.length > organizationIndex + 1) {
+      const id = parts[organizationIndex + 1]; // Получаем ID организации
+      setOrganizationId(id); // Устанавливаем ID в состояние
+    }
+  }, [pathname]);
+  const handleValueChange = (value: string) => {
+    setOrganizationId(value); // Обновляем состояние
     router.push(`/organization/${value}`); // Navigate to the new URL
   };
   return (
-    <Select onValueChange={handleValueChange}>
+    <Select value={organizationId} onValueChange={handleValueChange}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Organizations" />
       </SelectTrigger>

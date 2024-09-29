@@ -1,6 +1,5 @@
 import { siteConfig } from "@/config/site";
 import { MainNav } from "@/components/main-nav";
-import { CreateOrganization } from "../organization/CreateOrganization";
 import { SelectOrg } from "../organizations/SelectOrg";
 import { UserMenu } from "../user/UserMenu";
 import { MobileSidebar } from "./MobileSidebar";
