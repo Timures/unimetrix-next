@@ -30,7 +30,7 @@ export default function Login() {
     mutationFn: (data: IAuthForm) => authService.main("login", data),
     onSuccess() {
       reset();
-      push("/");
+      push("/dashboard");
       toast.success("Successfully login!");
     },
   });
@@ -59,7 +59,11 @@ export default function Login() {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2">
-        <Button className="w-full" onClick={handleSubmit(onSubmit)}>
+        <Button
+          type="submit"
+          className="w-full"
+          onClick={handleSubmit(onSubmit)}
+        >
           Sign In
         </Button>
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
