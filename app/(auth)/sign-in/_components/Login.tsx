@@ -1,5 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authService } from "@/services/auth.service";
@@ -21,9 +29,9 @@ export default function Login() {
     mutationKey: ["auth"],
     mutationFn: (data: IAuthForm) => authService.main("login", data),
     onSuccess() {
-      toast.success("Successfully login!");
       reset();
       push("/cabinet");
+      toast.success("Successfully login!");
     },
   });
 
@@ -31,38 +39,29 @@ export default function Login() {
     mutate(data);
   };
   return (
-    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-      <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-        Sign up to your account
-      </h1>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-3">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              {...register("email")}
-              type="email"
-              id="email"
-              placeholder="Email"
-            />
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <Label htmlFor="email">Password</Label>
-            <Input
-              {...register("password")}
-              type="password"
-              id="password"
-              placeholder="Enter Password"
-            />
-          </div>
+    <Card>
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl">Sign in to account</CardTitle>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            {...register("email")}
+            id="email"
+            type="email"
+            placeholder="m@example.com"
+          />
         </div>
-
-        <div className="flex items-center gap-5 justify-center">
-          <Button type="submit" className="bg-black w-full">
-            Login
-          </Button>
+        <div className="grid gap-2">
+          <Label htmlFor="password">Password</Label>
+          <Input {...register("password")} id="password" type="password" />
         </div>
+      </CardContent>
+      <CardFooter className="flex flex-col gap-2">
+        <Button className="w-full" onClick={handleSubmit(onSubmit)}>
+          Sign In
+        </Button>
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           Don&apos;t have an account yet?{" "}
           <Button
@@ -73,7 +72,7 @@ export default function Login() {
             <Link href={"/sign-up"}>Sign Up</Link>
           </Button>
         </p>
-      </form>
-    </div>
+      </CardFooter>
+    </Card>
   );
 }

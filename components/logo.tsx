@@ -10,17 +10,16 @@ const headingFont = localFont({
 
 export const Logo = () => {
   return (
-    <Link href={"/"}>
-      <div className="hover:opacity-75 transition items-center gap-x-2 hidden md:flex">
-        <p
-          className={cn(
-            "text-lg text-neutral-700 pb-1 dark:text-neutral-50",
-            headingFont.className
-          )}
-        >
-          <span className="text-orange-500">Jos</span>par
-        </p>
-      </div>
+    <Link href="/" className="flex items-center space-x-2">
+      <Image src="/logo-unimetrix.svg" alt="Unimetrix" width={40} height={40} />
+      <span
+        className={cn(
+          "inline-block font-bold text-background dark:text-foreground",
+          headingFont.className
+        )}
+      >
+        Unimetri<span className="text-yellow-400">x</span>
+      </span>
     </Link>
   );
 };

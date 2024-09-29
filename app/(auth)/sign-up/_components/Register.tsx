@@ -10,6 +10,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Register() {
   const { register, handleSubmit, reset, setValue } = useForm<IAuthForm>({
@@ -36,51 +44,47 @@ export default function Register() {
     mutate(data);
   };
   return (
-    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-      <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-        Sign up to your account
-      </h1>
-      <form
-        className="space-y-4 md:space-y-6"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-3">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              {...register("email")}
-              type="email"
-              id="email"
-              placeholder="Email"
-            />
+    <Card>
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl">Create an account</CardTitle>
+        <CardDescription>
+          Enter your email below to create your account
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <div className="grid grid-cols-2 gap-6">
+          <Button variant="outline">Github</Button>
+          <Button variant="outline">Google</Button>
+        </div>
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
           </div>
-
-          <div className="flex flex-col gap-3">
-            <Label htmlFor="email">Password</Label>
-            <Input
-              {...register("password")}
-              type="password"
-              id="password"
-              placeholder="Enter Password"
-            />
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <Label htmlFor="repeat">Repeat Password</Label>
-            <Input
-              {...register("password")}
-              type="password"
-              id="repeat"
-              placeholder="Repeat Password"
-            />
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-foreground dark:bg-background px-2 text-muted-foreground">
+              Or continue with
+            </span>
           </div>
         </div>
-
-        <div className="flex items-center gap-5 justify-center ">
-          <Button type="submit" className="w-full bg-black">
-            Register
-          </Button>
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            {...register("email")}
+            id="email"
+            type="email"
+            placeholder="m@example.com"
+          />
         </div>
+        <div className="grid gap-2">
+          <Label htmlFor="password">Password</Label>
+          <Input {...register("password")} id="password" type="password" />
+        </div>
+      </CardContent>
+      <CardFooter className="flex flex-col gap-2">
+        <Button className="w-full" onClick={handleSubmit(onSubmit)}>
+          Create account
+        </Button>
+
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           Have an account?{" "}
           <Button
@@ -91,7 +95,7 @@ export default function Register() {
             <Link href={"/sign-in"}>Sign In</Link>
           </Button>
         </p>
-      </form>
-    </div>
+      </CardFooter>
+    </Card>
   );
 }

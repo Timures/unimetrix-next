@@ -1,7 +1,7 @@
 "use client";
 import { Spinner } from "@/components/ui/spinner";
 import { useProfile } from "@/hooks/useProfile";
-import AddOrganization from "../organization/New";
+import Link from "next/link";
 
 export function Organizations() {
   const { data, isLoading } = useProfile();
@@ -12,7 +12,11 @@ export function Organizations() {
     <div>
       {data?.organizations.length ? (
         data.organizations.map((organization) => (
-          <div key={organization.id}>{organization.name}</div>
+          <div key={organization.id}>
+            <Link href={`/cabinet/organization/${organization.id}`}>
+              {organization.name}
+            </Link>
+          </div>
         ))
       ) : (
         <div className="w-1/3">

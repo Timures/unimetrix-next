@@ -4,7 +4,8 @@ import { Poppins } from "next/font/google";
 import { Medal } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 const headingFont = localFont({
   src: "../../public/fonts/CalSans-SemiBold.woff2",
 });
@@ -14,38 +15,54 @@ const textFont = Poppins({
 });
 const MarketingPage = () => {
   return (
-    <div className="flex items-center justify-center flex-col text-black">
-      <div
-        className={cn(
-          "flex items-center justify-center flex-col",
-          headingFont.className
-        )}
-      >
+    <section className="container mx-auto">
+      <div className="flex flex-col items-center gap-3">
         <div className="mb-4 flex items-center border shadow-sm p-4 bg-amber-100 text-amber-700 rounded-full uppercase">
           <Medal className="h-6 w-6 mr-2" /># 1 task management for Online
           schools!
         </div>
-        <h1 className="text-3xl md:text-6xl text-center text-neutral-800 mb-6">
-          Jospar helps online business move
+        <h1
+          className={cn(
+            "text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl text-background dark:text-foreground",
+            headingFont.className
+          )}
+        >
+          Unimetrix helps online business move
         </h1>
+
         <div className="text-3xl md:text-6xl bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white px-4 p-2 rounded-md pb-4 w-fit">
           work forward.
         </div>
+
+        <p
+          className={cn(
+            "max-w-[700px] text-lg text-muted-foreground text-center",
+            textFont.className
+          )}
+        >
+          Collaborate, manage projects, and reach new productivity peaks. From
+          hight rises to the home office, the way your team works is unique -
+          accomplish it all with
+        </p>
+
+        <div className="flex gap-4 justify-center">
+          <Link
+            href={siteConfig.links.docs}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants()}
+          >
+            Documentation
+          </Link>
+          <Link
+            href={siteConfig.links.github}
+            className={buttonVariants({ variant: "outline" })}
+          >
+            Sign Up Free
+          </Link>
+        </div>
       </div>
-      <div
-        className={cn(
-          "text-small md:text-xl text-neutral-400 mt-4 max-w-xs md:max-w-2xl text-center mx-auto",
-          textFont.className
-        )}
-      >
-        Collaborate, manage projects, and reach new productivity peaks. From
-        hight rises to the home office, the way your team works is unique -
-        accomplish it all with Jospar.
-      </div>
-      <Button className="mt-6" size={"lg"} asChild>
-        <Link href="/sign-up">Get Jospar for free</Link>
-      </Button>
-    </div>
+    </section>
   );
 };
 

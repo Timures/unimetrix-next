@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
   const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value;
 
-  //   const isCabinetPage = url.includes("/cabinet");
+  // const isCabinetPage = url.includes("/cabinet");
   const isAuthPage = url.includes("/auth");
 
   if (isAuthPage && refreshToken) {
