@@ -8,11 +8,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function SelectOrg() {
   const { data } = useProfile();
+  const [organization, setOrganization] = useState();
+  const router = useRouter();
+  const handleValueChange = (value) => {
+    setOrganization(value); // Update state
+    router.push(`/organization/${value}`); // Navigate to the new URL
+  };
   return (
-    <Select>
+    <Select onValueChange={handleValueChange}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Organizations" />
       </SelectTrigger>

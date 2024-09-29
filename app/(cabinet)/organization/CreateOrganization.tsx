@@ -34,7 +34,7 @@ export function CreateOrganization() {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Create organization</Button>
+          <Button variant="outline">Create</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

@@ -28,7 +28,7 @@ export default function CreateOrganizationForm({
     onSuccess() {
       toast.success("Organization successfully created!");
       reset();
-      push("/cabinet");
+      push("/dashboard");
       onSuccess();
     },
   });

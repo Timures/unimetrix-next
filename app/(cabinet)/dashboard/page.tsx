@@ -1,4 +1,4 @@
-import { Organizations } from "./organizations/Organizations";
+import { Organizations } from "../organizations/Organizations";
 
 export default function DashboardPage() {
   return (

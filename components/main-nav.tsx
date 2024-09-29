@@ -1,10 +1,7 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { CircuitBoardIcon } from "lucide-react";
 import { NavItem } from "@/types/nav";
-import Image from "next/image";
 import { Logo } from "./logo";
 
 interface MainNavProps {

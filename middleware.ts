@@ -6,11 +6,11 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
   const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value;
 
-  // const isCabinetPage = url.includes("/cabinet");
+  // const isDashboardPage = url.includes("/dashboard");
   const isAuthPage = url.includes("/auth");
 
   if (isAuthPage && refreshToken) {
-    return NextResponse.redirect(new URL("/cabinet", url));
+    return NextResponse.redirect(new URL("/dashboard", url));
   }
 
   if (isAuthPage) {
@@ -25,5 +25,5 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 }
 
 export const config = {
-  matcher: ["/cabinet/:path", "/auth/:path*"],
+  matcher: ["/dashboard/:path", "/auth/:path*"],
 };

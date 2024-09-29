@@ -13,7 +13,7 @@ export function Organizations() {
       {data?.organizations.length ? (
         data.organizations.map((organization) => (
           <div key={organization.id}>
-            <Link href={`/cabinet/organization/${organization.id}`}>
+            <Link href={`/dashboard/organization/${organization.id}`}>
               {organization.name}
             </Link>
           </div>

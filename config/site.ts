@@ -9,6 +9,16 @@ export const siteConfig = {
       href: "/",
     },
   ],
+  dashboardNav: [
+    {
+      title: "Home",
+      href: "/",
+    },
+    {
+      title: "Dashboard",
+      href: "/dashboard",
+    },
+  ],
   links: {
     twitter: "https://twitter.com/shadcn",
     github: "https://github.com/shadcn/ui",

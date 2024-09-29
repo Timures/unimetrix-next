@@ -30,7 +30,7 @@ export default function Login() {
     mutationFn: (data: IAuthForm) => authService.main("login", data),
     onSuccess() {
       reset();
-      push("/cabinet");
+      push("/");
       toast.success("Successfully login!");
     },
   });

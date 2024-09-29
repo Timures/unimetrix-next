@@ -1,4 +1,4 @@
-import { LogoutButton } from "@/components/cabinet-layout/sidebar/LogoutButton";
+import { LogoutButton } from "./Logout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {

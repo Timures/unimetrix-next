@@ -36,7 +36,7 @@ export default function Register() {
     onSuccess() {
       toast.success("Successfully login!");
       reset();
-      push("/cabinet");
+      push("/dashboard");
     },
   });
 
