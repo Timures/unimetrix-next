@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authService } from "@/services/auth.service";
-import { IAuthForm } from "@/types/auth.types";
+import { IAuthForm, Role } from "@/types/auth.types";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -25,7 +26,7 @@ export default function Register() {
   });
 
   useEffect(() => {
-    setValue("roles", ["OWNER"]);
+    setValue("roles", [Role.OWNER]);
   }, [setValue]);
 
   const { push } = useRouter();
@@ -37,6 +38,12 @@ export default function Register() {
       toast.success("Successfully login!");
       reset();
       push("/dashboard");
+    },
+    onError(error: any) {
+      // Display error message using toast
+      toast.error(
+        error?.response?.data?.message || "Login failed. Please try again."
+      );
     },
   });
 

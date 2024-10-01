@@ -13,7 +13,9 @@ import { usePathname, useRouter } from "next/navigation";
 
 export function SelectOrg() {
   const { data } = useProfile();
-  const [organizationId, setOrganizationId] = useState<string | undefined>();
+  const [organizationSlug, setOrganizationSlug] = useState<
+    string | undefined
+  >();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -25,15 +27,15 @@ export function SelectOrg() {
     // Проверяем, есть ли индекс "organization" и есть ли следующий элемент
     if (organizationIndex !== -1 && parts.length > organizationIndex + 1) {
       const id = parts[organizationIndex + 1]; // Получаем ID организации
-      setOrganizationId(id); // Устанавливаем ID в состояние
+      setOrganizationSlug(id); // Устанавливаем ID в состояние
     }
   }, [pathname]);
   const handleValueChange = (value: string) => {
-    setOrganizationId(value); // Обновляем состояние
+    setOrganizationSlug(value); // Обновляем состояние
     router.push(`/organization/${value}`); // Navigate to the new URL
   };
   return (
-    <Select value={organizationId} onValueChange={handleValueChange}>
+    <Select value={organizationSlug} onValueChange={handleValueChange}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Organizations" />
       </SelectTrigger>
@@ -42,7 +44,7 @@ export function SelectOrg() {
           {data?.organizations.length ? (
             data.organizations.map((organization) => (
               <div key={organization.id}>
-                <SelectItem value={organization.id}>
+                <SelectItem value={organization.slug}>
                   {organization.name}
                 </SelectItem>
               </div>

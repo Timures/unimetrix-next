@@ -18,9 +18,9 @@ export interface IAuthResponse {
 
 export type TypeUserForm = Omit<IUser, "id"> & { password?: string };
 
-enum Role {
-  MEMBER,
-  MANAGER,
-  OWNER,
-  ADMIN,
+export enum Role {
+  MEMBER = "MEMBER",
+  MANAGER = "MANAGER",
+  OWNER = "OWNER",
+  ADMIN = "ADMIN",
 }

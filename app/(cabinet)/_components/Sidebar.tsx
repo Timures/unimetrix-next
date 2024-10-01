@@ -22,7 +22,7 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
   );
 
   // Извлекаем id организации из пути
-  const getActiveOrganizationId = (path: string): string | undefined => {
+  const getActiveOrganizationSlug = (path: string): string | undefined => {
     const parts = path.split("/");
     const organizationIndex = parts.indexOf("organization");
 
@@ -33,9 +33,9 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
     return undefined; // Если ID не найден
   };
 
-  const activeOrganization = getActiveOrganizationId(pathname);
+  const activeOrganization = getActiveOrganizationSlug(pathname);
 
-  const onExpand = (id: string) => {
+  const onExpand = (slug: string) => {
     setExpanded((current) => {
       const newState = { ...current };
       // Закрываем все
@@ -43,10 +43,10 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
         newState[key] = false;
       });
       // Открываем только текущий
-      newState[id] = true;
+      newState[slug] = true;
       return newState;
     });
-    setExpanded((current) => ({ ...current, [id]: true })); // Открываем текущий
+    setExpanded((current) => ({ ...current, [slug]: true })); // Открываем текущий
   };
 
   if (isLoading) {
@@ -75,10 +75,10 @@ const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
         {data?.organizations.map((organization) => (
           <NavItem
             key={organization.id}
-            isActive={activeOrganization === organization.id}
-            isExpanded={expanded[organization.id]}
+            isActive={activeOrganization === organization.slug}
+            isExpanded={expanded[organization.slug]}
             organization={organization as Organization}
-            onExpand={() => onExpand(organization.id)}
+            onExpand={() => onExpand(organization.slug)}
           />
         ))}
       </Accordion>

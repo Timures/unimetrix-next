@@ -14,12 +14,13 @@ import { useRouter, usePathname } from "next/navigation";
 export type Organization = {
   id: string;
   name: string;
+  slug: string;
 };
 interface NavItemProps {
   isExpanded: boolean;
   isActive: boolean;
   organization: Organization;
-  onExpand: (id: string) => void;
+  onExpand: (slug: string) => void;
 }
 export const NavItem = ({
   isExpanded,
@@ -34,22 +35,22 @@ export const NavItem = ({
     {
       label: "Boards",
       icon: <Layout className="h-4 w-4 mr-2" />,
-      href: `/organization/${organization.id}`,
+      href: `/organization/${organization.slug}`,
     },
     {
       label: "Activity",
       icon: <Activity className="h-4 w-4 mr-2" />,
-      href: `/organization/${organization.id}/activity`,
+      href: `/organization/${organization.slug}/activity`,
     },
     {
       label: "Settings",
       icon: <Settings className="h-4 w-4 mr-2" />,
-      href: `/organization/${organization.id}/settings`,
+      href: `/organization/${organization.slug}/settings`,
     },
     {
       label: "Billing",
       icon: <CreditCard className="h-4 w-4 mr-2" />,
-      href: `/organization/${organization.id}/billing`,
+      href: `/organization/${organization.slug}/billing`,
     },
   ];
 
@@ -59,9 +60,9 @@ export const NavItem = ({
   };
 
   return (
-    <AccordionItem value={organization.id} className="border-none">
+    <AccordionItem value={organization.slug} className="border-none">
       <AccordionTrigger
-        onClick={() => onExpand(organization.id)}
+        onClick={() => onExpand(organization.slug)}
         className={cn(
           "flex items-center gap-x-2 p-1.5 text-neutral rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline",
           isActive && !isExpanded && "bg-sky-500/10 text-sky-700"

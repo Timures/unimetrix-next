@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -32,6 +31,13 @@ export default function Login() {
       reset();
       push("/dashboard");
       toast.success("Successfully login!");
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onError(error: any) {
+      // Display error message using toast
+      toast.error(
+        error?.response?.data?.message || "Login failed. Please try again."
+      );
     },
   });
 

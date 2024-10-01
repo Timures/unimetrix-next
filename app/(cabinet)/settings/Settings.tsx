@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useInitialData } from "./useInitialData";
 import { Button } from "@/components/ui/button";
-import { dataTagSymbol } from "@tanstack/react-query";
 
 export function Settings() {
   const { register, handleSubmit, reset, watch } = useForm<TypeUserForm>({
