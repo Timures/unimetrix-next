@@ -31,10 +31,17 @@ class OrganizationService {
   }
 
   async getOrganizationBySlug(slug: string) {
-    const response = await axiosWithAuth.get<IOrganizationResponse>(
-      `${this.BASE_USER_ORGANIZATIONS_URL}/${slug}`
-    );
-    return response.data; // Return response data directly
+    try {
+      const response = await axiosWithAuth.get<IOrganizationResponse>(
+        `${this.BASE_USER_ORGANIZATIONS_URL}/${slug}`
+      );
+      return response.data; // Возвращаем данные напрямую
+    } catch (error: any) {
+      // Обработка ошибок
+      throw new Error(
+        error.response?.data?.message || "Ошибка при загрузке организации"
+      );
+    }
   }
 
   async updateOrganization(id: string, data: TypeOrganizationFormState) {

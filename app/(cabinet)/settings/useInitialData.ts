@@ -15,5 +15,5 @@ export function useInitialData(reset: UseFormReset<TypeUserForm>) {
         roles: data.user.roles,
       });
     }
-  }, [data, isSuccess]);
+  }, [data, reset, isSuccess]);
 }

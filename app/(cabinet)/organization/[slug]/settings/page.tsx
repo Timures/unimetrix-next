@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Members } from "./_components/Members";
+import { InvitedMembers } from "./_components/InvitedMembers";
 
 const SettingsPage = () => {
   return (
@@ -28,7 +28,7 @@ const SettingsPage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Members />
+            <InvitedMembers />
           </CardContent>
         </Card>
       </TabsContent>
