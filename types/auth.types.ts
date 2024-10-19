@@ -18,6 +18,12 @@ export interface IAuthResponse {
 
 export type TypeUserForm = Omit<IUser, "id"> & { password?: string };
 
+export interface IRegisterInviteForm {
+  name?: string;
+  email: string;
+  password: string;
+  inviteToken: string;
+}
 export enum Role {
   MEMBER = "MEMBER",
   MANAGER = "MANAGER",
